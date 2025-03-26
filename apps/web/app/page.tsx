@@ -10,6 +10,17 @@ type Props = Omit<ImageProps, "src"> & {
 const ThemeImage = (props: Props) => {
   const { srcLight, srcDark, ...rest } = props;
 
+  const handleClick = async () => {
+    fetch("/api/create",{ 
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    })
+    }  
+  }
+
   return (
     <>
       <Image {...rest} src={srcLight} className="imgLight" />
