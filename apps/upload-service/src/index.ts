@@ -12,8 +12,12 @@ import { generateDockerfile } from './utils/generateDockerfile'
 // Load environment variables
 dotenv.config()
 
-const publisher = createClient()
-const subcriber = createClient()
+const publisher = createClient ({
+  url : process.env.REDIS_URL
+});
+const subcriber = createClient ({
+  url : process.env.REDIS_URL
+});
 
 async function initRedis () {
   await publisher.connect()
