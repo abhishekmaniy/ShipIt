@@ -1,3 +1,5 @@
+'use client'
+
 import Image, { type ImageProps } from "next/image";
 import { Button } from "@repo/ui/button";
 import styles from "./page.module.css";
@@ -19,6 +21,16 @@ const ThemeImage = (props: Props) => {
 };
 
 export default function Home() {
+  const handleClick = async () => {
+    await fetch("/api/create", { 
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({}),
+    });
+  };
+
   return (
     <div className={styles.page}>
       <main className={styles.main}>
@@ -66,6 +78,7 @@ export default function Home() {
         <Button appName="web" className={styles.secondary}>
           Open alert
         </Button>
+        <button onClick={handleClick}>Click Me</button>
       </main>
       <footer className={styles.footer}>
         <a
