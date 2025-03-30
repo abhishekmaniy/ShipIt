@@ -1,0 +1,1 @@
+{"root":["./src/index.ts","./src/utils/detectprojecttype.ts","./src/utils/geenerate.ts","./src/utils/generatedockerfile.ts"],"version":"5.8.2"}
