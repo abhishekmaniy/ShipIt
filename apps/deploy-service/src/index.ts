@@ -27,7 +27,7 @@ async function main() {
     try {
       const res = await subscriber.brPop(
         commandOptions({ isolated: true }),
-        'build queue',
+        'build-queue',
         0
       )
       const id = res?.element

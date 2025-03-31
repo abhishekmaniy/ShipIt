@@ -12,12 +12,12 @@ import { generateDockerfile } from './utils/generateDockerfile'
 // Load environment variables
 dotenv.config()
 
-const publisher = createClient ({
-  url : process.env.REDIS_URL
-});
-const subcriber = createClient ({
-  url : process.env.REDIS_URL
-});
+const publisher = createClient({
+  url: process.env.REDIS_URL
+})
+const subcriber = createClient({
+  url: process.env.REDIS_URL
+})
 
 async function initRedis () {
   await publisher.connect()
@@ -42,6 +42,10 @@ console.log('credentialsJson', credentialsJson)
 app.post('/deploy', async (req, res) => {
   console.log(req.body)
   const repoUrl = req.body.repoUrl
+  // publisher.lPush('build-queue', '0xyo9')
+  // console.log("pushed id to redis")
+  // res.status(200).json({ id: `0xyo9` })
+  // return
 
   const id = generate()
   await simpleGit().clone(repoUrl, path.join(__dirname, `output/${id}`))
